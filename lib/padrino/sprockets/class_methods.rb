@@ -3,11 +3,11 @@ module Padrino
     module ClassMethods  
       def sprockets(&block) 
         self.assets(&block)   
-        use Padrino::Sprockets::App, :root => root, :url => url
       end
       
       def assets(&block) 
-        @options ||= Options.new(&block)
+        @options ||= Options.new(&block)     
+        use Padrino::Sprockets::App, :root => root, :url => url
       end
     end
   end
