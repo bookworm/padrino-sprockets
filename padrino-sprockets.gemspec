@@ -9,10 +9,6 @@ Gem::Specification.new do |gem|
   gem.email = ["nightsailer@gmail.com"]
   gem.date = Time.now.strftime '%Y-%m-%d'
   gem.homepage = "https://github.com/nightsailer/padrino-sprockets"
-  gem.require_paths = ["lib"]
-  gem.files = [
-    'lib/padrino/sprockets-version.rb',
-    'lib/padrino/sprockets.rb'
-    ]
+  gem.files = `git ls-files`.strip.split("\n")
   gem.add_dependency 'sprockets'
 end
