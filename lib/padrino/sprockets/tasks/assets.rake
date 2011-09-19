@@ -1,3 +1,4 @@
+# Task based on the rails task of the same name
 namespace :assets do
   desc "Compile all the assets named in config.assets.precompile"
   task :precompile => :environment do           
