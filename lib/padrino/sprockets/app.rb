@@ -3,10 +3,10 @@ module Padrino
     class App
       def call(env)
         path = env["PATH_INFO"]
-        logger.debug { "path:#{path} url:#{settings.assets.url}" }
-        return settings.assets.app.call(env) unless settings.assets.matcher =~ path
-        env['PATH_INFO'].sub!(settings.assets.matcher,'')
-        settings.assets.sprockets_env.call(env)
+        logger.debug { "path:#{path} url:#{assets.url}" }
+        return assets.app.call(env) unless assets.matcher =~ path
+        env['PATH_INFO'].sub!(assets.matcher,'')
+        assets.sprockets_env.call(env)
       end
     end
   end
