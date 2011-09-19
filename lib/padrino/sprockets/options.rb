@@ -10,7 +10,8 @@ module Padrino
         @stylesheets_url = 'stylesheets'
         @javascripts_url = 'javascripts'  
         @public_stylesheets_folder = 'stylesheets'  
-        @public_javascripts_folder = 'javascripts' 
+        @public_javascripts_folder = 'javascripts'     
+        @compress = false
         @sprockets_env = ::Sprockets::Environment.new(@root)
         @sprockets_env.append_path 'assets/javascripts'
         @sprockets_env.append_path 'assets/stylesheets'
@@ -28,7 +29,8 @@ module Padrino
       attr_reader :digest    # Should we use filenames or actual hashes?  
       attr_reader :public_assets_folder    # The assets folder in /public     
       attr_reader :public_javascripts_folder  # The javascripts assets folder in /public/assets
-      attr_reader :public_stylesheets_folder   # The stylesheetss assets folder in /public/assets
+      attr_reader :public_stylesheets_folder   # The stylesheetss assets folder in /public/assets    
+      attr_reader :compress # Write .gz files?           
       attr_writer :url  # App URL
       attr_writer :root # App root      
       attr_writer :stylesheets_url # Stylesheets URL
@@ -37,7 +39,8 @@ module Padrino
       attr_writer :digest    # Should we use filenames or actual hashes?
       attr_writer :public_assets_folder  # The assets folder in /public      
       attr_writer :public_javascripts_folder  # The javascripts assets folder in /public/assets
-      attr_writer :public_stylesheets_folder   # The stylesheetss assets folder in /public/assets               
+      attr_writer :public_stylesheets_folder   # The stylesheetss assets folder in /public/assets    
+      attr_writer :compress # Write .gz files?           
       
       def append_path(path)     
         sprockets_env.append_path(path)
