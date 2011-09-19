@@ -22,7 +22,7 @@ module Padrino
       attr_reader :stylesheets_url # Stylesheets URL
       attr_reader :javascripts_url # Javascripts URL       
       attr_reader :precompile      # Assets to precompile  
-      attr_writer :digest    # Should we use filenames or actual hashes?
+      attr_reader :digest    # Should we use filenames or actual hashes?
       attr_writer :url  # App URL
       attr_writer :root # App root      
       attr_writer :stylesheets_url # Stylesheets URL
