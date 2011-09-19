@@ -3,8 +3,9 @@ module Padrino
     class Options   
       def initialize(app, &block) 
         @app = app
-        @root = app.root 
-        @url  = 'assets'   
+        @root = app.root   
+        @stylesheets_url = 'stylesheets'
+        @javascripts_url = 'javascripts'
         @sprockets_env = ::Sprockets::Environment.new(@root)
         @sprockets_env.append_path 'assets/javascripts'
         @sprockets_env.append_path 'assets/stylesheets'
@@ -15,16 +16,25 @@ module Padrino
       attr_reader :app  # Padrino App
       attr_reader :sprockets_env # Sprockets environment   
       attr_reader :url  # App URL  
-      attr_reader :root # App root  
+      attr_reader :root # App root      
+      attr_reader :stylesheets_url # Stylesheets URL
+      attr_reader :javascripts_url # Javascripts URL 
       attr_writer :url  # App URL
-      attr_writer :root # App root  
+      attr_writer :root # App root      
+      attr_writer :stylesheets_url # Stylesheets URL
+      attr_writer :javascripts_url # Javascripts URL  
+      
       
       def append_path(path)     
         sprockets_env.append_path(path)
       end   
       
-      def matcher()  
-        @matcher = /^\/#{@url}\/*/
+      def stylesheets_matcher()  
+        /^\/#{@stylesheets_url}\/*/
+      end 
+      
+      def javascripts_matcher()  
+        /^\/#{@javascripts_url}\/*/
       end
     end
   end
