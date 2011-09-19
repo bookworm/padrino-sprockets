@@ -14,12 +14,18 @@ namespace :assets do
        
       env.each_logical_path do |logical_path|
         if asset = env.find_asset(logical_path)
-          asset_path = app.assets.digest ? asset.digest_path : logical_path
-          filename = target.join(asset_path)
-
-          mkdir_p filename.dirname
-          asset.write_to(filename)
-          asset.write_to("#{filename}.gz") if filename.to_s =~ /\.(css|js)$/
+          asset_path = app.assets.digest ? asset.digest_path : logical_path          
+          filename = asset_path 
+          if filename.basename == '.js' 
+            path = target.join(app.assets.javascripts_folder)
+          elsif filename.basename == '.css'  
+            path = target.join(app.assets.javascripts_folder)
+          end
+          if path    
+            mkdir_p path
+            asset.write_to(filename.basename)
+            asset.write_to("#{filename.basename}.gz") if filename.to_s =~ /\.(css|js)$//
+          end
         end 
       end 
     end
