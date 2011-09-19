@@ -15,16 +15,16 @@ namespace :assets do
       env.each_logical_path do |logical_path|
         if asset = env.find_asset(logical_path)
           asset_path = app.assets.digest ? asset.digest_path : logical_path          
-          filename = asset_path 
-          if filename.basename == '.js' 
-            path = target.join(app.assets.javascripts_folder)
-          elsif filename.basename == '.css'  
-            path = target.join(app.assets.javascripts_folder)
+          filename = Pathname.new(asset_path)       
+          if filename.extname == '.js' 
+            path = target.join(app.assets.public_javascripts_folder)
+          elsif filename.extname == '.css'  
+            path = target.join(app.assets.public_stylesheets_folder) 
           end
           if path    
             mkdir_p path
-            asset.write_to(filename.basename)
-            asset.write_to("#{filename.basename}.gz") if filename.to_s =~ /\.(css|js)$//
+            asset.write_to(path.join(filename.basename))
+            asset.write_to("#{path.join(filename.basename)}.gz") if filename.to_s =~ /\.(css|js)$/ && app.assets.compress
           end
         end 
       end 
