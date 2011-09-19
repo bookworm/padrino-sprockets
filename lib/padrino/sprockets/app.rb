@@ -1,12 +1,16 @@
 module Padrino
   module Sprockets
-    class App
+    class App   
+      def initialize(app, options)    
+        @app = app     
+        @options = options
+      end
       def call(env)
-        path = env["PATH_INFO"]
-        logger.debug { "path:#{path} url:#{assets.url}" }
-        return assets.app.call(env) unless assets.matcher =~ path
-        env['PATH_INFO'].sub!(assets.matcher,'')
-        assets.sprockets_env.call(env)
+        path = env["PATH_INFO"]      
+        logger.debug { "path:#{path} url:#{@options.url}" }
+        return @app.call(env) unless @options.matcher =~ path
+        env['PATH_INFO'].sub!(@options.matcher,'')
+        @options.sprockets_env.call(env)
       end
     end
   end
