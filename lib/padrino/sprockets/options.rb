@@ -6,7 +6,7 @@ module Padrino
         @root = app.root     
         @digest = false unless Padrino.env == :production
         @digest ||= true   
-        @public_assets_folder = 'assets'
+        @public_assets_folder = '/assets'
         @stylesheets_url = 'stylesheets'
         @javascripts_url = 'javascripts'
         @sprockets_env = ::Sprockets::Environment.new(@root)
