@@ -11,7 +11,7 @@ module Padrino
       
       def assets(&block) 
         @options ||= Options.new(&block) if block_given?    
-        # use Padrino::Sprockets::App, :root => root, :url => url
+        use Padrino::Sprockets::App, :root => root, :url => url
         @options   
       end
     end
