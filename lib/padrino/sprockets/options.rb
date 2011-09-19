@@ -3,7 +3,9 @@ module Padrino
     class Options   
       def initialize(app, &block) 
         @app = app
-        @root = app.root   
+        @root = app.root     
+        @digest = false unless Padrino.env == :production
+        @digest ||= true
         @stylesheets_url = 'stylesheets'
         @javascripts_url = 'javascripts'
         @sprockets_env = ::Sprockets::Environment.new(@root)
@@ -20,11 +22,13 @@ module Padrino
       attr_reader :stylesheets_url # Stylesheets URL
       attr_reader :javascripts_url # Javascripts URL       
       attr_reader :precompile      # Assets to precompile  
+      attr_writer :digest    # Should we use filenames or actual hashes?
       attr_writer :url  # App URL
       attr_writer :root # App root      
       attr_writer :stylesheets_url # Stylesheets URL
       attr_writer :javascripts_url # Javascripts URL     
-      attr_writer :precompile      # Assets to precompile
+      attr_writer :precompile      # Assets to precompile      
+      attr_writer :digest    # Should we use filenames or actual hashes?
       
       def append_path(path)     
         sprockets_env.append_path(path)
