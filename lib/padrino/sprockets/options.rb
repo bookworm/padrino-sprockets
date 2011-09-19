@@ -24,7 +24,6 @@ module Padrino
       attr_writer :stylesheets_url # Stylesheets URL
       attr_writer :javascripts_url # Javascripts URL  
       
-      
       def append_path(path)     
         sprockets_env.append_path(path)
       end   
