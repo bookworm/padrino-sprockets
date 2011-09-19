@@ -18,11 +18,13 @@ module Padrino
       attr_reader :url  # App URL  
       attr_reader :root # App root      
       attr_reader :stylesheets_url # Stylesheets URL
-      attr_reader :javascripts_url # Javascripts URL 
+      attr_reader :javascripts_url # Javascripts URL       
+      attr_reader :precompile      # Assets to precompile  
       attr_writer :url  # App URL
       attr_writer :root # App root      
       attr_writer :stylesheets_url # Stylesheets URL
-      attr_writer :javascripts_url # Javascripts URL  
+      attr_writer :javascripts_url # Javascripts URL     
+      attr_writer :precompile      # Assets to precompile
       
       def append_path(path)     
         sprockets_env.append_path(path)
