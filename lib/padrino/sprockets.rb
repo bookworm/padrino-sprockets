@@ -13,6 +13,7 @@ module Padrino
 
     autoload :ClassMethods,  "#{PREFIX}/sprockets/class_methods"
     autoload :Options,       "#{PREFIX}/sprockets/options"
+    autoload :Configurator,  "#{PREFIX}/sprockets/configurator"
 
     Error = Class.new(StandardError)
 

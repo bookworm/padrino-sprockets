@@ -1,6 +1,8 @@
 module Padrino
   module Sprockets
-    class Options   
+    class Options
+      include Configurator
+         
       def initialize(app, &block) 
         @app = app
         @root = app.root     
@@ -19,28 +21,18 @@ module Padrino
         block.arity <= 0 ? instance_eval(&block) : yield(self)  if block_given?
       end 
       
-      attr_reader :app  # Padrino App
-      attr_reader :sprockets_env # Sprockets environment   
-      attr_reader :url  # App URL  
-      attr_reader :root # App root      
-      attr_reader :stylesheets_url # Stylesheets URL
-      attr_reader :javascripts_url # Javascripts URL       
-      attr_reader :precompile      # Assets to precompile  
-      attr_reader :digest    # Should we use filenames or actual hashes?  
-      attr_reader :public_assets_folder    # The assets folder in /public     
-      attr_reader :public_javascripts_folder  # The javascripts assets folder in /public/assets
-      attr_reader :public_stylesheets_folder   # The stylesheetss assets folder in /public/assets    
-      attr_reader :compress # Write .gz files?           
-      attr_writer :url  # App URL
-      attr_writer :root # App root      
-      attr_writer :stylesheets_url # Stylesheets URL
-      attr_writer :javascripts_url # Javascripts URL     
-      attr_writer :precompile      # Assets to precompile      
-      attr_writer :digest    # Should we use filenames or actual hashes?
-      attr_writer :public_assets_folder  # The assets folder in /public      
-      attr_writer :public_javascripts_folder  # The javascripts assets folder in /public/assets
-      attr_writer :public_stylesheets_folder   # The stylesheetss assets folder in /public/assets    
-      attr_writer :compress # Write .gz files?           
+      attrib :app  # Padrino App
+      attrib :sprockets_env # Sprockets environment   
+      attrib :url  # App URL  
+      attrib :root # App root      
+      attrib :stylesheets_url # Stylesheets URL
+      attrib :javascripts_url # Javascripts URL       
+      attrib :precompile      # Assets to precompile  
+      attrib :digest    # Should we use filenames or actual hashes?  
+      attrib :public_assets_folder    # The assets folder in /public     
+      attrib :public_javascripts_folder  # The javascripts assets folder in /public/assets
+      attrib :public_stylesheets_folder   # The stylesheetss assets folder in /public/assets    
+      attrib :compress # Write .gz files?           
       
       def append_path(path)     
         sprockets_env.append_path(path)
