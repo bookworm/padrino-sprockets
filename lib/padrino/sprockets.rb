@@ -17,6 +17,7 @@ module Padrino
     Error = Class.new(StandardError)
 
     require "#{PREFIX}/sprockets/version" 
-    require "#{PREFIX}/sprockets/app"
+    require "#{PREFIX}/sprockets/app"      
+    ::Padrino::Tasks.files << Dir[File.dirname(__FILE__) + "/tasks/**/*.rb"]
   end
 end 
