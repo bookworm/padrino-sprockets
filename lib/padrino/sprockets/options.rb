@@ -13,7 +13,9 @@ module Padrino
         @javascripts_url = 'javascripts'  
         @public_stylesheets_folder = 'stylesheets'  
         @public_javascripts_folder = 'javascripts'     
-        @compress = false
+        @compress = false          
+        @handle_stylesheets = true
+        @handle_javascripts = true
         @sprockets_env = ::Sprockets::Environment.new(@root)
         @sprockets_env.append_path 'assets/javascripts'
         @sprockets_env.append_path 'assets/stylesheets'
@@ -32,7 +34,9 @@ module Padrino
       attrib :public_assets_folder    # The assets folder in /public     
       attrib :public_javascripts_folder  # The javascripts assets folder in /public/assets
       attrib :public_stylesheets_folder   # The stylesheetss assets folder in /public/assets    
-      attrib :compress # Write .gz files?           
+      attrib :compress # Write .gz files?    
+      attrib :handle_stylesheets # Whether or not sprockets should handle the stylesheets
+      attrib :handle_javascripts # Whether or not sprockets should handle the javascripts       
       
       def append_path(path)     
         sprockets_env.append_path(path)
