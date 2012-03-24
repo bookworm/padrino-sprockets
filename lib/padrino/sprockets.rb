@@ -20,6 +20,6 @@ module Padrino
 
     require "#{PREFIX}/sprockets/version" 
     require "#{PREFIX}/sprockets/app"      
-    Padrino::Tasks.files << Dir[File.dirname(__FILE__) + "/sprockets/tasks/**/*.rb"]
+    ::Padrino::Tasks.files << Dir[File.dirname(__FILE__) + "/sprockets/tasks/**/*.rb"]
   end
 end 
