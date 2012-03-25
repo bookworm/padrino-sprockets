@@ -5,7 +5,7 @@ module Padrino
        if block_given? 
          self.assets(&block)
        else 
-         @options
+         @options ||= Options.new(self)
        end     
       end
       
@@ -14,7 +14,7 @@ module Padrino
           @options ||= Options.new(self, &block)
           use Padrino::Sprockets::App, @options
         end
-        @options   
+        @options ||= Options.new(self)    
       end
     end
   end
