@@ -4,7 +4,8 @@ module Padrino
       def initialize(app, options)    
         @app = app     
         @options = options
-      end
+      end       
+      
       def call(env)
         path = env["PATH_INFO"]      
         logger.debug { "path:#{path} url:#{@options.url}" }

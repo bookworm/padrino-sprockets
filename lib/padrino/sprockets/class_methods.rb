@@ -11,10 +11,14 @@ module Padrino
       
       def assets(&block) 
         if block_given?  
-          @options ||= Options.new(self, &block)
+          if @options   
+            @options.update(&block)    
+          else
+            @options = Options.new(self, &block) 
+          end
           use Padrino::Sprockets::App, @options
         end
-        @options ||= Options.new(self)    
+        @options ||= Options.new(self) 
       end
     end
   end

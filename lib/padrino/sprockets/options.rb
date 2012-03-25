@@ -24,13 +24,17 @@ module Padrino
         @handle_stylesheets = app.settings.handle_stylesheets if app.settings.respond_to?(:handle_stylesheets)  
         @handle_javascripts = app.settings.handle_javascripts if app.settings.respond_to?(:handle_javascripts)  
              
-        
         @sprockets_env             = ::Sprockets::Environment.new(@root)
         @sprockets_env.append_path 'assets/javascripts'
         @sprockets_env.append_path 'assets/stylesheets'
-        @sprockets_env.append_path 'assets/images'  
+        @sprockets_env.append_path 'assets/images'          
+        
         block.arity <= 0 ? instance_eval(&block) : yield(self)  if block_given?
-      end 
+      end    
+      
+      def update(&block) 
+        block.arity <= 0 ? instance_eval(&block) : yield(self)  if block_given?
+      end
       
       attrib :app                 # Padrino App
       attrib :sprockets_env       # Sprockets environment   
