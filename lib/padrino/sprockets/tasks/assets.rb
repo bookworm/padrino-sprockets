@@ -10,16 +10,16 @@ namespace :assets do
              
       prefix = app.uri_root unless app.uri_root == '/'
       prefix ||= ''
-      target = Pathname.new(File.join(Padrino.root + '/public', prefix, app.assets.public_assets_folder))
+      target = Pathname.new(File.join(Padrino.root + '/public', prefix, app.assets.assets_folder))
        
       env.each_logical_path do |logical_path|
         if asset = env.find_asset(logical_path)
           asset_path = app.assets.digest ? asset.digest_path : logical_path          
           filename = Pathname.new(asset_path)       
           if filename.extname == '.js' 
-            path = target.join(app.assets.public_javascripts_folder)
+            path = target.join(app.assets.javascripts_folder)
           elsif filename.extname == '.css'  
-            path = target.join(app.assets.public_stylesheets_folder) 
+            path = target.join(app.assets.stylesheets_folder) 
           end
           if path    
             mkdir_p path

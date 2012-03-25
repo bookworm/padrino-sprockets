@@ -10,9 +10,8 @@ module Padrino
           define_method(:"#{name}") { |*a|
             value = a.first
             self.instance_variable_set :"@#{name}", value  unless value.nil?
-            self.instance_variable_get :"@#{name}"
+            self.instance_variable_get :"@#{name}"    
           }
-
           alias_method(:"#{name}=", :"#{name}")
         end
       end
