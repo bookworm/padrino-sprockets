@@ -27,7 +27,7 @@ regsiter sprockets in your application:
 
 Now, you can access the asset follow:
 
-    #  visit /assets/application.js
+    #  visit /javascripts/application.js
     will find assets under these paths:
      => app/assets/javascripts/application.js
       => app/assets/javascripts/application.js.coffee
