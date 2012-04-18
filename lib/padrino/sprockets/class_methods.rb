@@ -6,6 +6,7 @@ module Padrino
          self.assets(&block)
        else
          @options ||= Options.new(self)
+         use Padrino::Sprockets::App, @options
        end
       end
 
