@@ -1,6 +1,6 @@
 # encoding: utf-8       
 require 'padrino-core/tasks'
-require "sprockets/environment"
+require "sprockets"
 module Padrino
   module Sprockets
     def self.registered(app)
