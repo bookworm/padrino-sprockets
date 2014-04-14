@@ -1,15 +1,17 @@
-# encoding: utf-8       
+# encoding: utf-8
 require 'padrino-core/tasks'
 require "sprockets"
+
 module Padrino
   module Sprockets
+
     def self.registered(app)
       unless app.root?
         raise Error, "Please set :root in your app."
-      end    
+      end
       app.extend ClassMethods
-    end  
-      
+    end
+
     PREFIX = File.dirname(__FILE__)
 
     autoload :ClassMethods,  "#{PREFIX}/sprockets/class_methods"
@@ -18,8 +20,8 @@ module Padrino
 
     Error = Class.new(StandardError)
 
-    require "#{PREFIX}/sprockets/version" 
-    require "#{PREFIX}/sprockets/app"      
+    require "#{PREFIX}/sprockets/version"
+    require "#{PREFIX}/sprockets/app"
     ::Padrino::Tasks.files << Dir[File.dirname(__FILE__) + "/sprockets/tasks/**/*.rb"]
   end
-end 
+end

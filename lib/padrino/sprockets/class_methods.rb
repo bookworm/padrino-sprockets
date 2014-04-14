@@ -1,24 +1,25 @@
-module Padrino  
+module Padrino
   module Sprockets
-    module ClassMethods  
-      def sprockets(&block) 
-       if block_given? 
+    module ClassMethods
+      def sprockets(&block)
+       if block_given?
          self.assets(&block)
-       else 
+       else
          @options ||= Options.new(self)
-       end     
+         use Padrino::Sprockets::App, @options
+       end
       end
-      
-      def assets(&block) 
-        if block_given?  
-          if @options   
-            @options.update(&block)    
+
+      def assets(&block)
+        if block_given?
+          if @options
+            @options.update(&block)
           else
-            @options = Options.new(self, &block) 
+            @options = Options.new(self, &block)
           end
           use Padrino::Sprockets::App, @options
         end
-        @options ||= Options.new(self) 
+        @options ||= Options.new(self)
       end
     end
   end

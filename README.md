@@ -13,11 +13,11 @@ Or include it in your project's `Gemfile` with Bundler:
 # Usage #
 
 Your assets place under these path:
-    
+
     app/assets/javascripts
     app/assets/images
     app/assets/stylesheets
-    
+
 regsiter sprockets in your application:
 
     class Redstore < Padrino::Application
@@ -27,18 +27,18 @@ regsiter sprockets in your application:
 
 Now, you can access the asset follow:
 
-    #  visit /assets/application.js
+    #  visit /javascripts/application.js
     will find assets under these paths:
      => app/assets/javascripts/application.js
       => app/assets/javascripts/application.js.coffee
        => app/assets/javascripts/application.js.erb
-    
+
 More document about sprockets, please check [Sprockets](https://github.com/sstephenson/sprockets/)
 
 # Helpers Usage #
- 
+
 ## sprockets
      :root =>  'asset root' # default is app.root
      :url => 'assets'  # default map url,location, default is 'assets'
 
-     
+
